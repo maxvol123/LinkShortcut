@@ -3,6 +3,7 @@ import { LinksPage } from "./pages/LinksPage"
 import { CreatePage } from "./pages/CreatePage"
 import { DetailPage } from "./pages/DetailPage"
 import { AuthPage } from "./pages/AuthPage"
+import { RegisterPage } from "./pages/RegisterPage"
 export const useRoutes = (isAuth:any) =>{
     if (isAuth) {
         return(
@@ -17,6 +18,7 @@ export const useRoutes = (isAuth:any) =>{
     return(
         <Routes>
         <Route path="/" Component={AuthPage}/>
+        <Route path="/register" Component={RegisterPage}/>
         <Route path="*" element={<Navigate to="/"/>}/>
         </Routes>
     )
