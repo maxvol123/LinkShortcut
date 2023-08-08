@@ -2,7 +2,9 @@ import express from "express";
 import config from "config"
 import mongoose from "mongoose";
 import router from "./routes/auth.routes.js"
+import cors from "cors";
 const app = express()
+app.use(cors())
 app.use('/api/auth', router)
 const PORT = config.get('port')
 async function start() {
@@ -15,4 +17,5 @@ async function start() {
         process.exit(1)
     }
 }
+
 start()
