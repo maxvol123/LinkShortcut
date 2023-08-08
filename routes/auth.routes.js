@@ -26,7 +26,7 @@ async (req,res)=>{
             return res.status(400).json({message:"We have user with this email or username, please go to login page"})
         }
         const hashedPassword = await bcrypt.hash(password, 15)
-        const user = new User({usernamem, email, password: hashedPassword})
+        const user = new User({username, email, password: hashedPassword})
         await user.save()
         res.status(201).json({message: "User created"})
     } catch (e) {
