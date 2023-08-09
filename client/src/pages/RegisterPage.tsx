@@ -13,7 +13,13 @@ export const RegisterPage=()=>{
           "username": username,
           "email": email,
           "password": password
-        });
+        },{
+          headers: {
+              'Content-Type': 'application/json',
+          }
+      }
+        
+        );
         localStorage.setItem("Token", res.data.token);
         window.location.reload();
       } catch (err) {

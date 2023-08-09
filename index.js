@@ -5,6 +5,7 @@ import router from "./routes/auth.routes.js"
 import cors from "cors";
 const app = express()
 app.use(cors())
+app.use(express.json({extended:true}))
 app.use('/api/auth', router)
 const PORT = config.get('port')
 async function start() {
