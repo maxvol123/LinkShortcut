@@ -29,10 +29,15 @@ async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 15);
         const user = new User({ username, email, password:hashedPassword});
         await user.save();
+        const token = jwt.sign(
+            {userId:finder.id},
+            config.get("jwtKey"),
+            {expiresIn:'3h'}
+        )
+        res.json({token, userId:finder.id})
         res.status(201).json({ message: "User created" });
     } catch (e) {
         res.status(500).json({ message: "Something went wrong, please try again or contact us" });
-        console.log(e);
     }
 });
 // /api/auth/login
@@ -43,9 +48,7 @@ router.post("/login",[
     try {
     const {email,password}= await req.body
     const errors = validationResult(req)
-    console.log(errors.array().length);
         if (errors.array().length!=0) {
-            console.log(123);
             return res.status(400).json({
                 errors: errors.array(),
                 message: "Please enter correct email"
@@ -53,7 +56,6 @@ router.post("/login",[
         }
 
         const finder = await User.findOne({email: email})
-        console.log(finder);
     if (!finder) {
         return res.status(404).json({message:"Email or password incorrect"}) 
         }
@@ -63,12 +65,13 @@ router.post("/login",[
         }
         const token = jwt.sign(
             {userId:finder.id},
-            config.get(jwtKey),
+            config.get("jwtKey"),
             {expiresIn:'3h'}
         )
         res.json({token, userId:finder.id})
     } catch (error) {
         res.status(500).json({message:"something went wrong, please try again or contact us"}) 
+        console.log(error);
     }
 
 })
