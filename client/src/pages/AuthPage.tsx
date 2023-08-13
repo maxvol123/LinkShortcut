@@ -6,22 +6,23 @@ export const AuthPage=()=>{
     const [password,setPassword]=useState("")
     const [error,setError]=useState(false)
     async function Login() {
-        try {
-        const res = await axios.post("http://localhost:777/api/auth/login", {
-          "email": email,
-          "password": password
-        });
-        localStorage.setItem("Token", res.data.token);
-        window.location.reload();
-      } catch (err) {
-        setError(true);
-      }
-    }
+      return axios.post("http://localhost:777/api/auth/login",{
+        "email":email,
+        "password":password
+      }).then((res)=>{localStorage.setItem("Token",res.data.token);
+      window.location.reload()
+    })
+    .catch((err)=>{
+      console.log(err);
+      setError(true);
+    })
+
+  }
     return(
         <div className="flex justify-center  pt-5">
             <div className=" mt-5 flex-col shadow-2xl px-16 py-2 pb-10">
             <h1 className="text-center text-3xl font-semibold my-10">Login</h1>
-            <form action="" method="get" onSubmit={notDefoult}>
+            <form action="" method="post" onSubmit={notDefoult}>
             <input type="email" placeholder="Email" className="mb-5 w-56 h-10" value={email} onChange={e => {setEmail(e.target.value)}}/>
             <input type="password" placeholder="Password" className="mb-5 w-56 h-10" value={password} onChange={e => {setPassword(e.target.value)}}/>
             <div className="flex">
