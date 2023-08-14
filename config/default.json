@@ -1,5 +1,0 @@
-{
-    "port":777,
-    "mongodbLink":"mongodb+srv://Maxvol:QZKGDeV37sYy7dtL@cluster0.frue3ku.mongodb.net/VinPromHolod?retryWrites=true&w=majority",
-    "jwtKey": "egoeimaiodekapendehronon"
-}
