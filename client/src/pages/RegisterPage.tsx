@@ -37,7 +37,7 @@ export const RegisterPage=()=>{
             <div className="flex">
             <input type="checkbox" name="Remember" id="Remember" className="mr-3 -mt-0.5" /> <label htmlFor="Remember" className=" select-none">Remember me</label>
             </div>
-            <input type="submit" value="LOG IN" className="w-full font-semibold pb-6 bg-blue-400" onClick={Register}/>
+            <input type="submit" value="SIGN UP" className="w-full font-semibold pb-6 bg-blue-400" onClick={Register}/>
             </form>
             <div className="text-right w-full">
             <a href="/" className="">Already have account?</a>

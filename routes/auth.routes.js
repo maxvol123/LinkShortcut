@@ -75,5 +75,23 @@ router.post("/login",[
     }
 
 })
-
+// /api/auth/me
+router.get("/me",
+async (req, res) => {
+    const token = req.headers.authorization;
+    try {
+        const decodedToken = jwt.verify(token, config.get("jwtKey"))
+        if (decodedToken.userId) {
+            console.log(decodedToken.userId);
+            const finder = await User.findOne({_id: decodedToken.userId})
+            console.log(finder);
+            res.json(finder.username)
+        }else{
+            return res.status(404).json({message:"Incorect token"}) 
+        }
+}catch (err) {
+    console.error('Error while decoding JWT:', err);
+  }
+}
+)
 export default router
