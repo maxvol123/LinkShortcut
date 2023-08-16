@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
 import { Nav } from "./Nav";
 import { useRoutes } from "./routes";
-import axios from "axios";
+import { Me } from "./hooks/Me";
+import { useState } from "react";
 
 function App() {
-  const routes = useRoutes(false)
+  const [login,setLogin]=useState(false)
+  let routes = useRoutes(login)
+  const promise = Me()
+  promise.then(function (val) {
+    setLogin(true)
+});
   return (
     <div className="App">
       <Nav></Nav>

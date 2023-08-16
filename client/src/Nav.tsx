@@ -1,34 +1,19 @@
 import { useEffect, useState } from "react";
 import icon from "./img/icon.png"
 import axios from "axios";
+import { Me } from "./hooks/Me";
 export function Nav() {
     localStorage.getItem("Token")
     const [username,setName]=useState("")
     const [login,setLogin]=useState(false)
 
-  useEffect(()=>{
-      me() 
-      })
-      async function me() {
-        let token = localStorage.getItem("Token") 
-        
-        if (token) {
-        return axios.get("http://localhost:777/api/auth/me",{
-          headers:{
-            authorization:token!
-          }
-        }).then((res)=>{
-          setName(res.data)
-          console.log(res.data);
-          setLogin(true)
-        })
-        .catch((err)=>{
-            console.log(err);
-            setLogin(false);
-          }) 
-        }}
-  
-    return(
+      const promise= Me()
+      promise.then(function (val) {
+        console.log(val);          
+        setLogin(true)
+        setName(val);
+    });
+      return(
         <>
             <div className="py-5 px-10 bg-blue-400 w-full flex center text-white justify-between">
                 <div className="flex">
