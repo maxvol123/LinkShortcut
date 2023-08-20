@@ -8,10 +8,7 @@ import axios from "axios"
           authorization:token!
         }
       }).then((res)=>{
-        console.log(res.data);
-
-        return res.data
-        
+        return res.data    
       })
       .catch((err)=>{
         return

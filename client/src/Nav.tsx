@@ -9,7 +9,6 @@ export function Nav() {
 
       const promise= Me()
       promise.then(function (val) {
-        console.log(val);          
         setLogin(true)
         setName(val);
     });
