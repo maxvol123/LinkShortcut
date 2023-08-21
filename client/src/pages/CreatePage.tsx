@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
 import { notDefoult } from "./NotDefault";
-import { Me } from "../hooks/Me";
 export const CreatePage=()=>{
     const [link, setLink]= useState("")
     const [error, setError]= useState(false)
+
     async function PushLink() {
-      console.log(Me());
-      
-            return axios.post("http://localhost:777/api/auth/add",{
-              "username":Me()
+      let token = localStorage.getItem("Token") 
+      console.log(token);
+       return axios.post("http://localhost:777/api/link/add",{
+              headers:{
+                authorization:token
+              }
             }).then((res)=>{
             window.location.reload()
           })
