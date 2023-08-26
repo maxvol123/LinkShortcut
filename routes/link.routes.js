@@ -8,7 +8,7 @@ routerl.post("/add",
 async (req, res) => {
     try {
         const baseUrl = config.get("baseUrl")
-        const {from} = req.body
+        const {from} = req.body.from
         const code = shortid.generate()
         const existing = await Link.findOne({from})
         if (existing) {
@@ -30,7 +30,7 @@ async (req, res) => {
 }
   }
 )
-routerl.get("/",
+routerl.get("/links",
 async (req, res) => {
     try {
         const token = req.headers.authorization;

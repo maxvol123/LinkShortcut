@@ -9,7 +9,7 @@ export function Nav() {
 
       const promise= Me()
       promise.then(function (val) {
-        setLogin(true)
+        setLogin(val)
         setName(val);
     });
       return(

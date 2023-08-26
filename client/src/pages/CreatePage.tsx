@@ -9,6 +9,7 @@ export const CreatePage=()=>{
       let token = localStorage.getItem("Token") 
       console.log(token);
        return axios.post("http://localhost:777/api/link/add",{
+              from:link,
               headers:{
                 authorization:token
               }
