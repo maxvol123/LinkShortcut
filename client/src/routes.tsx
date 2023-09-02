@@ -12,7 +12,6 @@ export const useRoutes = (isAuth:any) =>{
             <Route path="/links" Component={LinksPage}/>
             <Route path="/create" Component={CreatePage}/>
             <Route path="/t/:id" Component={DetailPage}/>
-            <Route path="*" element={<Navigate to="/create"/>}/>
         </Routes>
         )
     }else{
@@ -20,6 +19,7 @@ export const useRoutes = (isAuth:any) =>{
         <Routes>
         <Route path="/" Component={AuthPage}/>
         <Route path="/register" Component={RegisterPage}/>
+
         </Routes>
     )}
 }

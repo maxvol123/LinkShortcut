@@ -1,18 +1,23 @@
-import { request } from "http";
-import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const DetailPage=()=>{
-    const linkId = useParams().id
-    const getLink = async ()=>{
-        try {
-            await request(`api/t/${linkId}`)
-        } catch (e) {
-            
-        }
-    }
+
+    async function GetLink() {
+         return axios.post("http://localhost:777/api/link/link",{
+                from:window.location.href,
+              }).then((res)=>{
+                window.location.href = res.data;
+            })
+            .catch((err)=>{
+            })
+      } 
+      useEffect(()=>{
+        GetLink()
+      },[])
+
     return(
         <div className="">
-            asd{linkId}
         </div>
     )
 }

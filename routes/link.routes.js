@@ -13,12 +13,10 @@ async (req, res) => {
         const to = baseUrl+"/t/"+code
         const token = req.body.headers.authorization
         const decodedToken = jwt.verify(token, config.get("jwtKey"))
-        console.log(from);
         const link = new Link({
             code, to, from, owner: decodedToken.userId
         })
         await link.save()
-        console.log(link);
         res.status(201).json({link})
 }catch (err) {
     console.error('Error create link:', err);
@@ -33,6 +31,19 @@ async (req, res) => {
         const decodedToken = jwt.verify(token, config.get("jwtKey"))
         const links = await Link.find({owner: decodedToken.userId})
         res.json(links)
+}catch (err) {
+    console.error('Error get all links:', err);
+    return res.status(400)
+}
+  }
+)
+routerl.post("/link",
+async (req, res) => {
+    try {
+        const links = await Link.findOne({to: req.body.from})
+        links.clicks=links.clicks+1
+        res.json(links.from)
+        links.save()
 }catch (err) {
     console.error('Error get all links:', err);
     return res.status(400)

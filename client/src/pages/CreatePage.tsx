@@ -7,7 +7,6 @@ export const CreatePage=()=>{
 
     async function PushLink() {
       let token = localStorage.getItem("Token") 
-      console.log(token);
        return axios.post("http://localhost:777/api/link/add",{
               from:link,
               headers:{
@@ -17,10 +16,8 @@ export const CreatePage=()=>{
             window.location.reload()
           })
           .catch((err)=>{
-            console.log(err);
             setError(true);
           })
-      
     } 
     return(
         <div className="flex justify-center  pt-5">
