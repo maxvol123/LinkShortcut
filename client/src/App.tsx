@@ -9,7 +9,11 @@ function App() {
   const promise = Me()
   
   promise.then(function (val) {
+  if (val!= undefined) {
     setLogin(true)    
+  }else{
+    setLogin(false)
+  }
 });
   return (
     <div className="App">

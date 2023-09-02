@@ -10,8 +10,9 @@ export const useRoutes = (isAuth:any) =>{
         return(
         <Routes>
             <Route path="/links" Component={LinksPage}/>
-            <Route path="/create" Component={CreatePage}/>
             <Route path="/t/:id" Component={DetailPage}/>
+            <Route path="/" Component={CreatePage}/>
+
         </Routes>
         )
     }else{
@@ -19,7 +20,6 @@ export const useRoutes = (isAuth:any) =>{
         <Routes>
         <Route path="/" Component={AuthPage}/>
         <Route path="/register" Component={RegisterPage}/>
-
         </Routes>
     )}
 }
