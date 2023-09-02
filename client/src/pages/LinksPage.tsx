@@ -19,7 +19,7 @@ export const LinksPage=()=>{
     return(
         <div className="flex flex-wrap justify-center">
           {data.map(item => (
-          <div key={item._id} className="flex flex-col mt-5 shadow-2xl px-5 py-2 pb-10 w-1/4 mr-2 overflow-hidden	break-words	">
+          <div key={item._id} className="flex flex-col mt-5 shadow-2xl px-5 py-2 pb-10 w-1/4 mr-2 overflow-hidden	break-words" >
             <div className="">The original link: <a href={item.from}>{item.from}</a></div>
             <div className="">The short link: <a href={item.to}>{item.to}</a></div>
             <div className="">Total clicks amount: {item.clicks}</div>

@@ -7,8 +7,9 @@ function App() {
   const [login,setLogin]=useState(false)
   let routes = useRoutes(login)
   const promise = Me()
+  
   promise.then(function (val) {
-    setLogin(val)
+    setLogin(true)    
 });
   return (
     <div className="App">
