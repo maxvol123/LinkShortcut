@@ -9,6 +9,10 @@ async (req, res) => {
     try {
         const baseUrl = config.get("baseUrl")
         const from = req.body.from
+        if (!from) {
+            console.log("incorrect link");
+            return res.status(500).json("incorrect link")
+        }
         const code = shortid.generate()
         const to = baseUrl+"/t/"+code
         const token = req.body.headers.authorization

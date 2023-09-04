@@ -7,7 +7,7 @@ export const CreatePage=()=>{
 
     async function PushLink() {
       let token = localStorage.getItem("Token") 
-       return axios.post("http://localhost:777/api/link/add",{
+        return await axios.post("http://localhost:777/api/link/add",{
               from:link,
               headers:{
                 authorization:token
@@ -26,7 +26,7 @@ export const CreatePage=()=>{
             <form action="" method="post" onSubmit={notDefoult}>
             <input type="url" placeholder="Enter link" value={link} onChange={e => {setLink(e.target.value)}}/>
             <input type="submit" value="Create ShortCut" className="w-full font-semibold pb-6 bg-blue-400 mt-5" onClick={()=>{PushLink()}}/>
-            <div className="" >{error&&<div className="text-red-600">Something went wrong</div>}</div>
+            <div className="" >{error&&<div className="text-red-600">Incorrect link</div>}</div>
             </form>
             </div>
         </div>

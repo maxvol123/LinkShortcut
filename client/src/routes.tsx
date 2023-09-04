@@ -5,8 +5,9 @@ import { DetailPage } from "./pages/DetailPage"
 import { AuthPage } from "./pages/AuthPage"
 import { RegisterPage } from "./pages/RegisterPage"
 export const useRoutes = (isAuth:any) =>{
-    if (isAuth) {
+    console.log(isAuth);
 
+    if (isAuth) {        
         return(
         <Routes>
             <Route path="/links" Component={LinksPage}/>
