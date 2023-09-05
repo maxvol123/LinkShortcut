@@ -16,6 +16,12 @@ export const LinksPage=()=>{
               setData(response.data)
         
       } 
+      async function DeleteLinks(id:any) {
+        console.log(id);
+        
+         return await axios.delete("http://localhost:777/api/link/link",id
+         )        
+      }
     return(
         <div className="flex flex-wrap justify-center">
           {data.map(item => (
@@ -23,7 +29,7 @@ export const LinksPage=()=>{
             <div className="">The original link: <a href={item.from}>{item.from}</a></div>
             <div className="">The short link: <a href={item.to}>{item.to}</a></div>
             <div className="">Total clicks amount: {item.clicks}</div>
-            
+            <button  className="bg-red-600 mt-2" onClick={()=>{DeleteLinks(item._id)}}>Delete</button>
             </div>
         ))}
         </div>

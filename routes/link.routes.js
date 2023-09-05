@@ -54,4 +54,18 @@ async (req, res) => {
 }
   }
 )
+routerl.delete("/link",
+async (req, res) => {
+    try {
+        console.log(req.body);
+        const res = await Link.findByIdAndDelete(req.body.id)
+        return res.status(200)
+
+}catch (err) {
+    console.error('Error delete link:', err);
+    return res.status(400)
+}
+  }
+)
+
 export default routerl
