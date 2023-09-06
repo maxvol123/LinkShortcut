@@ -16,12 +16,18 @@ export const LinksPage=()=>{
               setData(response.data)
         
       } 
-      async function DeleteLinks(id:any) {
-        console.log(id);
-        
-         return await axios.delete("http://localhost:777/api/link/link",id
-         )        
-      }
+      const DeleteLinks = async (id: any) => {
+          const res = await axios.delete('http://localhost:777/api/link/link', {
+            data: { id: id },
+          })
+          .then((res)=>{
+            console.log(res);
+            
+            window.location.reload()
+          })
+          .catch ((err)=> {
+          console.error(err)})      
+        }
     return(
         <div className="flex flex-wrap justify-center">
           {data.map(item => (
